@@ -16,7 +16,7 @@ services:
       - db
     volumes:
       - static:/backend_static
-      - media:/media
+      - media:/app/media
   frontend:
     image: nepa27/kittygram_frontend
     env_file: .env
@@ -30,8 +30,9 @@ services:
     env_file: .env
     volumes:
       - static:/static/
-      - media:/media
+      - media:/app/media
     ports:
       - 9000:80
     depends_on:
+      - backend
       - frontend
