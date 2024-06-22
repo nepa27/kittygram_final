@@ -8,6 +8,9 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10"]
     services:
       postgres:
         image: postgres:13.10
@@ -23,11 +26,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        strategy:
-          matrix:
-            os: ["ubuntu-latest"]
-            python-version: ["3.8", "3.9", "3.10"]
-
+        python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip 
