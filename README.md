@@ -1,8 +1,8 @@
-[![Main Taski workflow](https://github.com/nepa27/kittygram_final/actions/workflows/main.yml/badge.svg)](https://github.com/nepa27/kittygram_final/actions/workflows/main.yml)
-# Проект Kittygram
-Проект Kittygram
+[![Main Taski workflow](https://github.com/nepa27/vcatntakte/actions/workflows/main.yml/badge.svg)](https://github.com/nepa27/vcatntakte/actions/workflows/main.yml)
+# Проект vCATntakte
+Проект vCATntakte
 ## Описание
-Вы любитель кошек или просто ищете способ поднять себе настроение? Тогда вы попали в правильное место! Kittygram - это платформа социальных медиа, созданная для того, чтобы приносить радость и удовольствие пользователям всех возрастов. Наша миссия - создать сообщество, где любители кошек могут делиться и открывать для себя очаровательными фотографиями кошек, общаться с единомышленниками и распространять позитив и счастье.
+Вы любитель кошек или просто ищете способ поднять себе настроение? Тогда вы попали в правильное место! vCATntakte - это платформа социальных медиа, созданная для того, чтобы приносить радость и удовольствие пользователям всех возрастов. Наша миссия - создать сообщество, где любители кошек могут делиться и открывать для себя очаровательными фотографиями кошек, общаться с единомышленниками и распространять позитив и счастье.
 
 Вы можете зарегистрироваться на сайте, а затем делиться с другими пользователями фотографиями и достижениями своих любимцев.
 ## Основные особенности
@@ -20,13 +20,13 @@
 ## Запуск проекта
 ### Локальное развертывание
 
-Чтобы развернуть приложение Kittygram локально:
+Чтобы развернуть приложение vCATntakte локально:
 
 1. Клонируйте репозиторий на вашем локальном компьютере:
 
 ```
-   git clone https://github.com/nepa27/kittygram_final
-   cd kittygram_final
+   git clone https://github.com/nepa27/vcatntakte
+   cd vcatntakte
 ```
    
 2. Установите и активируйте виртуальное окружение c учетом версии Python 3.9:
@@ -69,7 +69,7 @@ python manage.py migrate
    npm install
    npm start
 ```
-Откройте веб-браузер и перейдите по адресу http://127.0.0.1, чтобы взаимодействовать с локальной версией Kittygram.
+Откройте веб-браузер и перейдите по адресу http://127.0.0.1, чтобы взаимодействовать с локальной версией vCATntakte.
 
 
 ### Удаленное развертывание
@@ -79,10 +79,10 @@ python manage.py migrate
     ssh -i PATH_TO_SSH_KEY/SSH_KEY_NAME YOUR_USERNAME@SERVER_IP_ADDRESS 
     ```
 
-2. Создайте на сервере директорию `kittygram`:
+2. Создайте на сервере директорию `vCATntakte`:
 
     ```
-    mkdir kittygram
+    mkdir vCATntakte
     ```
 
 3. Установите Docker Compose на сервер:
@@ -95,10 +95,10 @@ python manage.py migrate
     sudo apt install docker-compose
     ```
 
-4. Скопируйте файлы `docker-compose.production.yml` и `.env` в директорию `kittygram/` на сервере:
+4. Скопируйте файлы `docker-compose.production.yml` и `.env` в директорию `vCATntakte/` на сервере:
 
     ```
-    scp -i PATH_TO_SSH_KEY/SSH_KEY_NAME docker-compose.production.yml YOUR_USERNAME@SERVER_IP_ADDRESS:/home/YOUR_USERNAME/kittygram/docker-compose.production.yml
+    scp -i PATH_TO_SSH_KEY/SSH_KEY_NAME docker-compose.production.yml YOUR_USERNAME@SERVER_IP_ADDRESS:/home/YOUR_USERNAME/vCATntakte/docker-compose.production.yml
     ```
     
     Где:
@@ -110,15 +110,15 @@ python manage.py migrate
 5. Запустите Docker Compose в режиме демона:
 
     ```
-    sudo docker-compose -f /home/YOUR_USERNAME/kittygram/docker-compose.production.yml up -d
+    sudo docker-compose -f /home/YOUR_USERNAME/vCATntakte/docker-compose.production.yml up -d
     ```
 
 6. Выполните миграции, соберите статические файлы бэкенда и скопируйте их в `/backend_static/static/`:
 
     ```
-    sudo docker-compose -f /home/YOUR_USERNAME/kittygram/docker-compose.production.yml exec backend python manage.py migrate
-    sudo docker-compose -f /home/YOUR_USERNAME/kittygram/docker-compose.production.yml exec backend python manage.py collectstatic
-    sudo docker-compose -f /home/YOUR_USERNAME/kittygram/docker-compose.production.yml exec backend cp -r /app/collected_static/. /backend_static/static/
+    sudo docker-compose -f /home/YOUR_USERNAME/vCATntakte/docker-compose.production.yml exec backend python manage.py migrate
+    sudo docker-compose -f /home/YOUR_USERNAME/vCATntakte/docker-compose.production.yml exec backend python manage.py collectstatic
+    sudo docker-compose -f /home/YOUR_USERNAME/vCATntakte/docker-compose.production.yml exec backend cp -r /app/collected_static/. /backend_static/static/
     ```
 
 7. Откройте конфигурационный файл Nginx в редакторе nano:
@@ -160,7 +160,7 @@ python manage.py migrate
 1. Файл workflow уже написан и находится в директории:
 
     ```
-    kittygram/.github/workflows/main.yml
+    vCATntakte/.github/workflows/main.yml
     ```
 
 2. Для адаптации его к вашему серверу добавьте секреты в GitHub Actions:
@@ -179,10 +179,10 @@ python manage.py migrate
 
 ### Для успешного развертывания проекта необходимо в главной директории создать файл .env, где будут указаны следующие параметры:
 
-- POSTGRES_USER=kittygram_user
-- POSTGRES_PASSWORD=kittygram_password
-- POSTGRES_DB=kittygram
-- DB_NAME=kittygram
+- POSTGRES_USER=vCATntakte_user
+- POSTGRES_PASSWORD=vCATntakte_password
+- POSTGRES_DB=vCATntakte
+- DB_NAME=vCATntakte
 - DB_HOST=db
 - DB_PORT=5432
 - SECRET_KEY=somesecretkey
